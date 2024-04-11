@@ -9,7 +9,9 @@ const BR = '<br/>';
 $query = "SELECT * FROM movies";
 $statement = $pdo->query($query);
 $movies = $statement->fetchAll();
-
+?>
+    <a href="create_movie.php">Add a new movie</a><br><br>
+<?php
 foreach ($movies as $idmovie => $movie) {
 ?>
     <a href="detail_movie.php?movie_id=<?= $movie['id'] ?>"><?= $movie['name'] ?></a>
