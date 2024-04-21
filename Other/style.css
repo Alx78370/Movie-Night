@@ -1,0 +1,166 @@
+@font-face {
+    font-family: "bondStory";
+    src: url(../Other/font/Bond\ Story.otf), url(../Other/font/Bond\ Story.ttf);
+  }
+* {
+    font-family: "bondStory";
+}
+.d-grid.gap-2.col-3.mx-auto {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+.backgroundAccueil {
+    background-image: url(../Other/images_deco/img-accueil.jpg);
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+.card {
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+}
+.cardList {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    left: 20%;
+    top: 15%;
+    width: 60%;
+    padding: 1%;
+}
+.cardForm {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 50%;
+    padding: 1%;
+}
+.cardForm h1 {
+    text-align: center;
+}
+.cardDetail {
+    position: absolute;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    padding: 1%;
+    align-items: center;
+}
+.iconMovie {
+    height: 50px;
+}
+.movie {
+    display: flex;
+    margin-bottom: 1%;
+    align-items: center;
+    padding-left: 1%;
+    font-size: 1.5rem;
+    border-top: 1px solid rgb(165, 165, 165);
+    padding-top: 1%;
+}
+.movie:hover {
+    background-color: rgb(203, 203, 203);
+}
+.btn.btn-primary {
+    margin-right: 5% ;
+    margin-bottom: 5%;
+}
+.btn.btn-danger {
+    margin-right: 5% ;
+}
+
+.title_date_movie {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    width: 100%;
+}
+
+.imdb_icon {
+    margin-left: -3%;
+    width: 20%;
+}
+.movie .imdb_icon {
+    margin-left: -5%;
+    width: 17%;
+}
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+.movie .rating {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+
+}
+.director {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+.genre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+.bi.bi-star {
+    vertical-align: baseline;
+    margin-right: 2%;
+}
+.list-group-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.cardDetail h1 {
+    font-size: 5rem;
+}
+.cardDetail img {
+    margin-right: 2%;
+    border-radius: 10px;
+}
+.list-group-item.list-group-item-action {
+    align-items: center;
+    justify-content:unset;
+}
+.list-group-item.list-group-item-action img {
+    border-radius: 10px;
+    margin-right: 5%;
+}
+.collapse.navbar-collapse {
+    justify-content: space-around;
+}
+.btn_movie {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
