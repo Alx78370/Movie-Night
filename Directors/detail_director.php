@@ -12,11 +12,11 @@ $statement->bindvalue(':director_id', $director_id, \PDO::PARAM_INT);
 $statement->execute();
 $director = $statement->fetch(PDO::FETCH_ASSOC);
 
-$queryDirectorMovies = "SELECT GROUP_CONCAT(m.name SEPARATOR ', ' ) AS filmography FROM movies m JOIN directors ON m.directors_id = directors.id WHERE directors.id = :director_id GROUP BY directors.id";
+$queryDirectorMovies = "SELECT m.id, m.name FROM movies m JOIN directors ON m.directors_id = directors.id WHERE directors.id = :director_id ";
 $statement = $pdo->prepare($queryDirectorMovies);
 $statement->bindvalue(':director_id', $director_id, \PDO::PARAM_INT);
 $statement->execute();
-$directorMovies = $statement->fetch(PDO::FETCH_ASSOC);
+$directorMovies = $statement->fetchall(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +44,10 @@ $directorMovies = $statement->fetch(PDO::FETCH_ASSOC);
                 <p><?= $director['biography'] ?></p>
             </li>
             <li class="list-group-item">
-                <p>Filmography: <?= $directorMovies['filmography'] ?></p>
+                <p>Filmography:</p>
+                <?php foreach ($directorMovies as $directorMovie) { ?>
+                    <a href="../Movies/detail_movie.php?movie_id=<?=$directorMovie['id']?>"><?=$directorMovie['name']?></a>
+                <?php } ?>
             </li>
         </ul>
         <div>

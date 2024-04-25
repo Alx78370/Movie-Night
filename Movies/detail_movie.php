@@ -1,6 +1,6 @@
 <?php
 include '../Other/header.php';
-
+vies:
 require_once '../Other/connec.php';
 $pdo = new \PDO(DSN, USER, PASS);
 
@@ -12,11 +12,11 @@ $statement->bindvalue(':movie_id', $movie_id, \PDO::PARAM_INT);
 $statement->execute();
 $movie = $statement->fetch(PDO::FETCH_ASSOC);
 
-$queryGenres = "SELECT GROUP_CONCAT(g.name SEPARATOR ', ' ) AS groupGenre FROM genres g JOIN movies_genres m_g ON m_g.genres_id = g.id JOIN movies m ON m_g.movies_id = m.id WHERE m.id = :movie_id GROUP BY m.id;";
+$queryGenres = "SELECT g.id, g.name FROM genres g JOIN movies_genres m_g ON m_g.genres_id = g.id JOIN movies m ON m_g.movies_id = m.id WHERE m.id = :movie_id";
 $statement = $pdo->prepare($queryGenres);
 $statement->bindvalue(':movie_id', $movie_id, \PDO::PARAM_INT);
 $statement->execute();
-$genre = $statement->fetch(PDO::FETCH_ASSOC);
+$genres = $statement->fetchall(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -42,11 +42,16 @@ $genre = $statement->fetch(PDO::FETCH_ASSOC);
             <li class="list-group-item">
                 <p><?= $movie['synopsis'] ?></p>
             </li>
-            <li class="list-group-item">
-                <a href="../Directors/detail_director.php?director_id=<?= $movie['directorId'] ?>" class="director"><img style="width:30%; border-radius:10px; margin-right:5%" src="../Directors/image_director/<?= $movie['picture'] ?> " alt="director_picture">Director: <?= $movie['first_name'] . ' ' . $movie['last_name'] ?></a>
+            <li class="list-group-item" style="align-items: center;">
+                Director:
+                <a href="../Directors/detail_director.php?director_id=<?= $movie['directorId'] ?>" class="director"><?= $movie['first_name'] . ' ' . $movie['last_name']?> <img style="width:30%; border-radius:10px; margin-left:10%" src="../Directors/image_director/<?= $movie['picture'] ?> " alt="director_picture"></a>
             </li>
             <li class="list-group-item">
-                <p class="genre">Genre(s): <?= $genre['groupGenre'] ?></p>
+            Genre(s):
+                <?php foreach ($genres as $genre) { ?>
+                    <a href="../Genres/detail_genre.php?genre_id=<?=($genre['id']) ?>" class="genre"> <?= $genre['name'] ?></a>
+                <?php } ?>
+                
             </li>
             <li class="list-group-item">
                 <div class="rating">
